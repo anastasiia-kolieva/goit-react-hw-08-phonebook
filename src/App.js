@@ -1,47 +1,39 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import ContactForm from './components/ContactForm/ContactForm';
-import Filter from './components/Filter/Filter';
-import ContactList from './components/ContactList/ContactList';
-import { getContacts } from './redux/contacts-selectors';
+import { useEffect, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+import Container from './components/Container/Container';
+import AppBar from './components/Appbar/Appbar';
+import HomeView from './views/HomeView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
 import * as operations from './redux/operations';
 
-const stylesForWrapper = {
-  width: '500px',
-  margin: '0 auto',
-  paddingTop: '30px',
-};
-
-const stylesForTitles = {
-  textAlign: 'center',
-  color: '#6B5EAC',
-};
-
 export default function App() {
-  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
+  // Проверить!!!! Сдесь ли фетчатся контакты
   useEffect(() => {
     dispatch(operations.fetchContacts());
   }, []);
 
-  const handelCheckUniqueContact = name => {
-    const isExistContact = !!contacts.find(contact => contact.name === name);
-    isExistContact && alert('Contact is already exist!');
-    return !isExistContact;
-  };
-
   return (
-    <div style={{ ...stylesForWrapper }}>
-      <h1 style={{ ...stylesForTitles }}>Phonebook</h1>
+    <Container>
+      <AppBar />
 
-      <ContactForm onCheckUnique={handelCheckUniqueContact} />
-
-      <h2 style={{ ...stylesForTitles }}>Contacts</h2>
-
-      <Filter />
-
-      <ContactList />
-    </div>
+      <Suspense
+        fallback={
+          <Loader type="Hearts" color="#f842da" height={80} width={80} />
+        }
+      >
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/login" component={LoginView} />
+          <Route path="/contacts" component={ContactsView} />
+        </Switch>
+      </Suspense>
+    </Container>
   );
 }

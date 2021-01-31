@@ -1,0 +1,16 @@
+.title {
+  text-align: center;
+  color: #f842da;
+  padding-bottom: 10px;
+}
+
+.form {
+  width: 310px;
+  padding-left: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}

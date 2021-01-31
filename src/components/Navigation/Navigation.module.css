@@ -1,0 +1,12 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 16px;
+  font-weight: 600;
+  color: #2a363b;
+  font-size: 18px;
+}
+
+.activeLink {
+  color: #f881e4;
+}
