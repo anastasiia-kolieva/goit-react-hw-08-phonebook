@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import s from '../ContactForm/ContactForm.module.css';
 import shortid from 'shortid';
-import * as operations from '../../redux/operations';
+import * as operations from '../../redux/contacts/operations';
 
 export default function ContactForm({ onCheckUnique }) {
   const [name, setName] = useState('');

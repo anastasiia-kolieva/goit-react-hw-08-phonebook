@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import s from '../ContactList/ContactList.module.css';
-import * as operations from '../../redux/operations';
-import { getfilteredContacts } from '../../redux/contacts-selectors';
+import * as operations from '../../redux/contacts/operations';
+import { getfilteredContacts } from '../../redux/contacts/contacts-selectors';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (

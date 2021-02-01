@@ -8,7 +8,7 @@ import HomeView from './views/HomeView';
 import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
 import ContactsView from './views/ContactsView';
-import * as operations from './redux/operations';
+import * as operations from './redux/contacts/operations';
 
 export default function App() {
   const dispatch = useDispatch();
