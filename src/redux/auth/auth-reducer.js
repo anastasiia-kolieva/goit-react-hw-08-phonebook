@@ -8,22 +8,19 @@ const initialUserState = {
   isLoggedIn: false,
 };
 
-const user = createReducer(initialUserState, {});
+// сюда будем записывать свойство user из responce
+// в payload будет свойство user и свойство token
+const user = createReducer(initialUserState, {
+  [authActions.registerSuccess]: (_, payload) => payload.user,
+});
 
-const token = createReducer(null, {});
+// сюда будем записывать свойство token из responce
+// в payload будет свойство user и свойство token
+const token = createReducer(null, {
+  [authActions.registerSuccess]: (_, payload) => payload.token,
+});
 
 const error = createReducer(null, {});
-
-// const rootReducer = combineReducers({
-//   items: itemsReducer,
-//   filter: filterReducer,
-// });
-
-// const store = configureStore({
-//   reducer: {
-//     contacts: rootReducer,
-//   },
-// });
 
 // auth такого формата
 export default combineReducers({ user, token, error });

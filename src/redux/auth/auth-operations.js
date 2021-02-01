@@ -17,8 +17,20 @@ const token = {
  * POST @ /users/signup
  * body: { name, email, password }
  * После успешной регистрации добавляем токен в HTTP-заголовок
+ * credentials - это данные пользователя
  */
-const register = credentials => dispatch => {};
+const register = credentials => async dispatch => {
+  dispatch(authActions.registerRequest());
+
+  try {
+    const responce = await axios.post('/users/signup', credentials);
+    // прокидывает responce.data до редюсера. В responce.data лежит обьект со свойствами user и token.
+    //  В payload будет свойство user и свойство token
+    dispatch(authActions.registerSuccess(responce.data));
+  } catch (error) {
+    dispatch(authActions.registerError(error.message));
+  }
+};
 
 /*
  * POST @ /users/login

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import authOperations from '../redux/auth/auth-operations';
 import s from './styles.module.css';
 
 export default function RegisterView() {
@@ -24,7 +24,7 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(authOperations.register({ name, email, password }));
+    dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');

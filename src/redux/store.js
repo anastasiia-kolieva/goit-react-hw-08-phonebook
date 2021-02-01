@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { configureStore, createReducer } from '@reduxjs/toolkit';
 import * as actions from './contacts/actions';
 import actionsTypes from './contacts/types';
+import authReducer from './auth/auth-reducer';
 
 const itemsReducer = createReducer([], {
   [actions.fetchContactsSuccess]: (_, action) => action.payload,
@@ -17,14 +18,15 @@ const filterReducer = createReducer('', {
   [actionsTypes.changeFilter]: (_, action) => action.payload,
 });
 
-const rootReducer = combineReducers({
+const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
 });
 
 const store = configureStore({
   reducer: {
-    contacts: rootReducer,
+    auth: authReducer,
+    contacts: contactsReducer,
   },
 });
 
