@@ -7,7 +7,7 @@ const fetchContacts = () => dispatch => {
   api
     .fetchContacts()
     .then(data => dispatch(actions.fetchContactsSuccess(data)))
-    .catch(error => dispatch(actions.fetchContactsError(error)));
+    .catch(error => dispatch(actions.fetchContactsError(error.message)));
 };
 
 // Action-creator- это функция, в которую передаются аргументы. А из себя она возвращает
@@ -22,7 +22,9 @@ const contactFormSubmithandler = newContact => dispatch => {
   api
     .addContacts(newContact)
     .then(data => dispatch(actions.contactFormSubmithandlerSuccess(data)))
-    .catch(error => dispatch(actions.contactFormSubmithandlerError(error)));
+    .catch(error =>
+      dispatch(actions.contactFormSubmithandlerError(error.message)),
+    );
 };
 
 const handelDeleteContact = contactId => dispatch => {
@@ -31,7 +33,7 @@ const handelDeleteContact = contactId => dispatch => {
   api
     .deleteContacts(contactId)
     .then(() => dispatch(actions.handelDeleteContactSuccess(contactId)))
-    .catch(error => dispatch(actions.handelDeleteContactError(error)));
+    .catch(error => dispatch(actions.handelDeleteContactError(error.message)));
 };
 
 export { fetchContacts, contactFormSubmithandler, handelDeleteContact };

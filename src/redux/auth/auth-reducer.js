@@ -17,7 +17,7 @@ const user = createReducer(initialUserState, {
 });
 
 // сюда будем записывать свойство token из responce
-// в payload будет свойство user и свойство token
+// в payload будет свойство token
 const token = createReducer(null, {
   [authActions.registerSuccess]: (_, action) => action.payload.token,
   [authActions.loginSuccess]: (_, action) => action.payload.token,
