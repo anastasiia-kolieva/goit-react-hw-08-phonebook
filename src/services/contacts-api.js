@@ -1,11 +1,6 @@
-import { getState } from 'react';
-import authSelectors from '../redux/auth/auth-selectors';
-
 const BASE_URL = 'https://goit-phonebook-api.herokuapp.com';
 
-async function fetchContacts() {
-  const state = getState();
-  const persistedToken = state.auth.token;
+async function fetchContacts({ persistedToken }) {
   const options = {
     method: 'GET',
     headers: {
@@ -22,13 +17,13 @@ async function fetchContacts() {
   }
 }
 
-async function addContacts(newContactToAdd) {
+async function addContacts(newContactToAdd, { persistedToken }) {
   const options = {
     method: 'POST',
     body: JSON.stringify(newContactToAdd),
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
-      Authorization: 'Bearer ' + authSelectors.getToken(),
+      Authorization: 'Bearer ' + persistedToken,
     },
   };
 
@@ -41,11 +36,11 @@ async function addContacts(newContactToAdd) {
   }
 }
 
-async function deleteContacts(contactId) {
+async function deleteContacts(contactId, { persistedToken }) {
   const options = {
     method: 'DELETE',
     headers: {
-      Authorization: 'Bearer ' + authSelectors.getToken(),
+      Authorization: 'Bearer ' + persistedToken,
     },
   };
 

@@ -1,11 +1,13 @@
 import api from '../../services/contacts-api';
 import * as actions from './actions';
 
-const fetchContacts = () => dispatch => {
+const fetchContacts = () => (dispatch, getState) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
   dispatch(actions.fetchContactsRequest());
 
   api
-    .fetchContacts()
+    .fetchContacts({ persistedToken })
     .then(data => dispatch(actions.fetchContactsSuccess(data)))
     .catch(error => dispatch(actions.fetchContactsError(error.message)));
 };
@@ -16,22 +18,26 @@ const fetchContacts = () => dispatch => {
 // этот action отправляет дальше
 // тоесть отправляется результат функции
 // по результату http запроса, делается dispatch с результатами асинхронки(с данными) отправляешь action
-const contactFormSubmithandler = newContact => dispatch => {
+const contactFormSubmithandler = newContact => (dispatch, getState) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
   dispatch(actions.contactFormSubmithandlerRequest());
 
   api
-    .addContacts(newContact)
+    .addContacts(newContact, { persistedToken })
     .then(data => dispatch(actions.contactFormSubmithandlerSuccess(data)))
     .catch(error =>
       dispatch(actions.contactFormSubmithandlerError(error.message)),
     );
 };
 
-const handelDeleteContact = contactId => dispatch => {
+const handelDeleteContact = contactId => (dispatch, getState) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
   dispatch(actions.handelDeleteContactRequest());
 
   api
-    .deleteContacts(contactId)
+    .deleteContacts(contactId, { persistedToken })
     .then(() => dispatch(actions.handelDeleteContactSuccess(contactId)))
     .catch(error => dispatch(actions.handelDeleteContactError(error.message)));
 };

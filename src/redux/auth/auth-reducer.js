@@ -14,6 +14,7 @@ const user = createReducer(initialUserState, {
   [authActions.registerSuccess]: (_, action) => action.payload.user,
   [authActions.loginSuccess]: (_, action) => action.payload.user,
   [authActions.logoutSuccess]: () => initialUserState.user,
+  [authActions.getCurrentUserSuccess]: (_, action) => action.payload,
 });
 
 // сюда будем записывать свойство token из responce
@@ -27,7 +28,8 @@ const token = createReducer(null, {
 const error = createReducer(null, {
   [authActions.registerError]: (_, action) => action.payload,
   [authActions.loginError]: (_, action) => action.payload,
-  [authActions.logoutSuccess]: (_, action) => action.payload,
+  [authActions.logoutError]: (_, action) => action.payload,
+  [authActions.getCurrentUserError]: (_, action) => action.payload,
 });
 
 // auth такого формата

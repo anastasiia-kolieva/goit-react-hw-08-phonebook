@@ -84,9 +84,28 @@ const logOut = () => async dispatch => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
-const getCurrentUser = () => (dispatch, getState) => {
-  // const state = getState();
-  // const persistedToken = state.auth.token;
+const getCurrentUser = () => async (dispatch, getState) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
+
+  // если токена в localStorage нет, тогда выходим
+  if (persistedToken === null) {
+    return;
+  }
+
+  token.set(persistedToken);
+
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const responce = await axios.get('/users/current');
+
+    // token.unset();
+
+    dispatch(authActions.getCurrentUserSuccess(responce.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error.message));
+  }
 };
 
 const operations = {
