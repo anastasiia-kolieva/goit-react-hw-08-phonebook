@@ -16,7 +16,7 @@ export default function ContactsView() {
 
   useEffect(() => {
     dispatch(operations.fetchContacts());
-  }, []);
+  }, [dispatch]);
 
   const handelCheckUniqueContact = name => {
     const isExistContact = !!contacts.find(contact => contact.name === name);
