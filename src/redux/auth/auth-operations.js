@@ -84,7 +84,10 @@ const logOut = () => async dispatch => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
-const getCurrentUser = () => (dispatch, getState) => {};
+const getCurrentUser = () => (dispatch, getState) => {
+  // const state = getState();
+  // const persistedToken = state.auth.token;
+};
 
 const operations = {
   register,
