@@ -33,6 +33,7 @@ export default function RegisterView() {
   return (
     <div>
       <h1 className={s.title}>Register page</h1>
+      <h2 className={s.title}>Не задевайте зомби за живое!</h2>
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>
