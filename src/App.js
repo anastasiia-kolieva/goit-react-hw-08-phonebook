@@ -9,6 +9,7 @@ import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
 import ContactsView from './views/ContactsView';
 import authOperations from './redux/auth/auth-operations';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,7 +31,11 @@ export default function App() {
           <Route exact path="/" component={HomeView} />
           <Route path="/register" component={RegisterView} />
           <Route path="/login" component={LoginView} />
-          <Route path="/contacts" component={ContactsView} />
+          <PrivateRoute
+            path="/contacts"
+            component={ContactsView}
+            redirectTo="/login"
+          />
         </Switch>
       </Suspense>
     </Container>
