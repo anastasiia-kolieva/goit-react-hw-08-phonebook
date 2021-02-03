@@ -57,8 +57,11 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
   },
+  middleware,
 });
 
 const persistor = persistStore(store);
 
-export default { store, persistor };
+const phonebookStore = { store, persistor };
+
+export default phonebookStore;

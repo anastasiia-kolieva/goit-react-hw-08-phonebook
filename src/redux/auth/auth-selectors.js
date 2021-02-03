@@ -1,14 +1,13 @@
-const getisAthenticated = state => Boolean(state.auth.token);
+const getisAthenticated = state => state.auth.isAthenticated;
 
 const getToken = state => state.auth.token;
-// в AppBar поменять
-const getIsLoggedIn = state => state.auth.isLoggedIn;
 
 const getUsername = state => state.auth.user.name;
 
-export default {
+const authSelectors = {
   getisAthenticated,
   getToken,
-  getIsLoggedIn,
   getUsername,
 };
+
+export default authSelectors;

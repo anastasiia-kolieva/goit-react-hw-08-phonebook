@@ -10,13 +10,10 @@ import authSelectors from '../redux/auth/auth-selectors';
  */
 
 export default function PrivateRoute({
-  // children,
   component: Component,
-  //   isAuthenticated,
   redirectTo,
   ...routeProps
 }) {
-  //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isAuthenticated = useSelector(authSelectors.getisAthenticated);
   return (
     <Route
@@ -28,7 +25,6 @@ export default function PrivateRoute({
           <Redirect to={redirectTo} />
         )
       }
-      // {/* {isAuthenticated ? children : <Redirect to={redirectTo} />} */}
     />
   );
 }

@@ -1,6 +1,5 @@
-import { useEffect, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
 import Container from '../components/Container/Container';
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
@@ -12,7 +11,6 @@ import s from './styles.module.css';
 export default function ContactsView() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  // const isLoadingTodos = useSelector(todosSelectors.getLoading);
 
   useEffect(() => {
     dispatch(operations.fetchContacts());

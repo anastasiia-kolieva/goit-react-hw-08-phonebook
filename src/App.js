@@ -1,16 +1,21 @@
-import { useEffect, Suspense } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Container from './components/Container/Container';
 import AppBar from './components/Appbar/Appbar';
-import HomeView from './views/HomeView';
-import RegisterView from './views/RegisterView';
-import LoginView from './views/LoginView';
-import ContactsView from './views/ContactsView';
+// import HomeView from './views/HomeView';
+// import RegisterView from './views/RegisterView';
+// import LoginView from './views/LoginView';
+// import ContactsView from './views/ContactsView';
 import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+
+const HomeView = lazy(() => import('./views/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const ContactsView = lazy(() => import('./views/ContactsView'));
 
 export default function App() {
   const dispatch = useDispatch();

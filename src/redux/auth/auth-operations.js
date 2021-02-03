@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
@@ -99,8 +98,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
 
   try {
     const responce = await axios.get('/users/current');
-
-    // token.unset();
 
     dispatch(authActions.getCurrentUserSuccess(responce.data));
   } catch (error) {

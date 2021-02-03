@@ -4,8 +4,6 @@ import * as authActions from './auth-actions';
 
 const initialUserState = {
   user: { name: null, email: null },
-  token: null,
-  isLoggedIn: false,
 };
 
 // сюда будем записывать свойство user из responce
@@ -32,12 +30,23 @@ const error = createReducer(null, {
   [authActions.getCurrentUserError]: (_, action) => action.payload,
 });
 
+const isAthenticated = createReducer(false, {
+  [authActions.registerSuccess]: () => true,
+  [authActions.loginSuccess]: () => true,
+  [authActions.getCurrentUserSuccess]: () => true,
+  [authActions.registerError]: () => false,
+  [authActions.loginError]: () => false,
+  [authActions.getCurrentUserError]: () => false,
+  [authActions.logoutSuccess]: () => false,
+});
+
 // auth такого формата
-export default combineReducers({ user, token, error });
+export default combineReducers({ isAthenticated, user, token, error });
 
 // STORE:
 // {
 //     auth:{
+//  isAthenticated: isAthenticated,
 //         user: user,
 //         token:token,
 //         error:error,
