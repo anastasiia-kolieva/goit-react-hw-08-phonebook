@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-03-phonebook"]=this["webpackJsonpgoit-react-hw-03-phonebook"]||[]).push([[6],{108:function(t,e,o){t.exports={title:"styles_title__IkMu4",form:"styles_form__3o8Oy",label:"styles_label__3Q9B7"}},123:function(t,e,o){"use strict";o.r(e),o.d(e,"default",(function(){return l}));var n=o(1),s=(o(0),o(40)),c=o(108),i=o.n(c);function l(){return Object(n.jsx)(s.a,{children:Object(n.jsx)("h1",{className:i.a.title,children:"Welcome to ZombiLand!!"})})}}}]);
+//# sourceMappingURL=6.d5d1fc25.chunk.js.map
