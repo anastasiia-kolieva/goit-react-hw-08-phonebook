@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import authOperations from '../redux/auth/auth-operations';
 import s from './styles.module.css';
 
@@ -29,7 +30,7 @@ export default function LoginView() {
   return (
     <div>
       <h1 className={s.title}>Login page</h1>
-      <h2 className={s.title}>Зомби тоже люди, только мёртвые!</h2>
+      <h2 className={s.title_secondary}>Зомби тоже люди, только мёртвые!</h2>
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>
@@ -52,7 +53,9 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Login</button>
+        <Button type="submit" variant="contained" color="secondary">
+          Login
+        </Button>
       </form>
     </div>
   );

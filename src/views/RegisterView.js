@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import authOperations from '../redux/auth/auth-operations';
 import s from './styles.module.css';
 
@@ -33,7 +34,7 @@ export default function RegisterView() {
   return (
     <div>
       <h1 className={s.title}>Register page</h1>
-      <h2 className={s.title}>Не задевайте зомби за живое!</h2>
+      <h2 className={s.title_secondary}>Не задевайте зомби за живое!</h2>
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>
@@ -61,7 +62,9 @@ export default function RegisterView() {
           />
         </label>
 
-        <button type="submit">Register</button>
+        <Button type="submit" variant="contained" color="secondary">
+          Register
+        </Button>
       </form>
     </div>
   );

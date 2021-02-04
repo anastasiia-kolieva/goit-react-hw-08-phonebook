@@ -1,16 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap');
+
 .title {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Potta One', cursive;
   text-align: center;
-  color: #f842da;
+  color: #0cac4e;
   padding: 15px 0 20px;
+  text-transform: uppercase;
+}
+
+.title_secondary {
+  font-size: 28px;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  color: #0cac4e;
 }
 
 .form {
-  width: 340px;
+  width: 360px;
   padding: 15px 0 20px 10px;
+  margin: 0 auto;
 }
 
 .label {
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
+}
+
+.div {
+  text-align: center;
 }

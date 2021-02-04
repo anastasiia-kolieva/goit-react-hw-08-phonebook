@@ -1,8 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
 .filter_title {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Potta One', cursive;
   text-align: center;
-  color: #6b5eac;
+  color: #0cac4e;
+  padding: 15px 0 20px;
+  text-transform: uppercase;
+}
+
+.div {
+  margin: 0 auto;
 }
 
 .filter_input {
-  margin-left: 15px;
+  width: 260px;
+  margin: 0 auto;
 }

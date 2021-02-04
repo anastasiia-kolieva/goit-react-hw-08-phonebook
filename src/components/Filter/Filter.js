@@ -11,13 +11,15 @@ export default function Filter() {
   return (
     <>
       <h2 className={s.filter_title}>Find contacts by name</h2>
-      <input
-        type="text"
-        placeholder="Enter contact name"
-        className={s.filter_input}
-        value={value}
-        onChange={event => dispatch(actions.changeFilter(event.target.value))}
-      ></input>
+      <div className={s.div}>
+        <input
+          type="text"
+          placeholder="Enter contact name"
+          className={s.filter_input}
+          value={value}
+          onChange={event => dispatch(actions.changeFilter(event.target.value))}
+        ></input>
+      </div>
     </>
   );
 }

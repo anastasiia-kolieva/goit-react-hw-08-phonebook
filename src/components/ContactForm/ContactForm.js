@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import s from '../ContactForm/ContactForm.module.css';
 import shortid from 'shortid';
 import * as operations from '../../redux/contacts/operations';
@@ -78,9 +79,14 @@ export default function ContactForm({ onCheckUnique }) {
           onChange={handleChange}
         />
       </label>
-      <button type="submit" className={s.submit_button}>
+      <Button
+        variant="contained"
+        color="secondary"
+        type="submit"
+        className={s.submit_button}
+      >
         Add contact
-      </button>
+      </Button>
     </form>
   );
 }

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import s from '../ContactList/ContactList.module.css';
 import * as operations from '../../redux/contacts/operations';
 import { getfilteredContacts } from '../../redux/contacts/contacts-selectors';
@@ -10,12 +11,14 @@ const ContactList = ({ contacts, onDeleteContact }) => {
       {contacts.map(contact => (
         <li key={contact.id} className={s.li}>
           {contact.name}: {contact.number}
-          <button
+          <Button
+            variant="contained"
+            color="secondary"
             className={s.button}
             onClick={() => onDeleteContact(contact.id)}
           >
             Delete
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

@@ -4,13 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Container from './components/Container/Container';
 import AppBar from './components/Appbar/Appbar';
-// import HomeView from './views/HomeView';
-// import RegisterView from './views/RegisterView';
-// import LoginView from './views/LoginView';
-// import ContactsView from './views/ContactsView';
 import authOperations from './redux/auth/auth-operations';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import s from './App.module.css';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
@@ -30,7 +27,13 @@ export default function App() {
 
       <Suspense
         fallback={
-          <Loader type="Hearts" color="#f842da" height={80} width={80} />
+          <Loader
+            type="Hearts"
+            color="#0cac4e"
+            height={60}
+            width={60}
+            className={s.loader}
+          />
         }
       >
         <Switch>
